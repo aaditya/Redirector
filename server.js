@@ -1,8 +1,6 @@
 var http = require('http');
 var app = require('express')();
 
-app.set('view engine', 'ejs');
-
 var port = process.env.PORT || 3000;
 
 var server = http.createServer(app);
@@ -19,8 +17,7 @@ app.get('/',function(req,res){
 });
 
 app.get('/:code',function(req,res){
-	var code = req.params.code;
-	res.render(__dirname+'/public/index.ejs',{data:code});
+	res.sendFile(__dirname+'/public/index.html');
 });
 
 server.listen(port,function() {
